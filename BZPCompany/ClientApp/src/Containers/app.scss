@@ -1,0 +1,45 @@
+.header {
+    position: relative;
+
+    .absolute-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+
+        .text {
+            background-color: rgba(4, 0, 255, 0.459);
+            border-radius: 5px;
+            color: white;
+            padding: 10px 15px;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 10px;
+            opacity: 1;
+        }
+    }
+
+    .header-image {
+        width: 100%;
+        opacity: .7;
+    }
+}
+
+.main-body {
+    background-color: rgb(238, 238, 238);
+    padding: 40px;
+
+    .card-img-top {
+        width: 100%;
+    }
+}
+
+.footer {
+    background-color: yellowgreen;
+    padding: 20px 40px;
+    color: white;
+}
