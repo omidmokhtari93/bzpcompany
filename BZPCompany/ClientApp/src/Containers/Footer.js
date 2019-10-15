@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Components/components.scss'
+import '../Assets/scss/components.scss'
 import http from 'axios';
 
 export default class Footer extends Component {

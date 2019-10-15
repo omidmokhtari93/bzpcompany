@@ -17,8 +17,9 @@ export default class Carousel extends Component {
     }
 
     render() {
+        let winWidth = () => { return window.innerWidth < 768 };
         return (
-            <div id="carousel-example-2" className="carousel slide carousel-fade" data-ride="carousel" >
+            <div id="carousel-example-2" className="carousel slide" data-ride="carousel" >
                 <ol className="carousel-indicators">
                     {this.state.carousel.map((x, index) => <li key={index} data-target="#carousel-example-2" data-slide-to="0" className={index === 0 ? "active" : ""}></li>)}
                 </ol>
@@ -31,8 +32,11 @@ export default class Carousel extends Component {
                                 <div className="mask rgba-black-light"></div>
                             </div>
                             <div className="carousel-caption">
-                                <h3 className="h3-responsive text-dark">{x.title}</h3>
-                                <p className="text-dark">{x.text.substring(0 , 100) + ' ...'}</p>
+                                <h3><span className="badge badge-primary font-weight-light">{x.title}</span></h3>
+                                <h5><span className="badge badge-primary font-weight-lighter">
+                                    {winWidth() ? x.text.substring(0, 30) + ' ...' :
+                                        x.text.substring(0, 70) + ' ...'}</span>
+                                </h5>
                             </div>
                         </div>
                     )}

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, withRouter, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 import './app.scss'
-import Footer from '../Components/Footer';
-import Posts from '../Components/Posts';
-import Carousel from '../Components/Carousel';
-import Products from '../Components/Pages/Products';
+import Footer from '../Containers/Footer';
+import Carousel from '../Containers/Carousel';
+import Products from '../Components/Products';
+import Product from '../Components/Product';
+import Home from '../Components/Home';
 
 export default class App extends Component {
 
@@ -12,7 +13,7 @@ export default class App extends Component {
     return (
       <Router>
         <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-dark bg-primary" style={{ backgroundColor: '#e3f2fd' }}>
+          <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <a className="navbar-brand" href="http://bzpcompany.eu">BZPCompany</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
               data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,10 +44,13 @@ export default class App extends Component {
           <div className="main-body">
             <Switch>
               <Route exact path="/">
-                <Posts />
+                <Home />
               </Route>
               <Route exact path="/products">
                 <Products />
+              </Route>
+              <Route exact path="/product/:id">
+                <Product />
               </Route>
             </Switch>
           </div>
