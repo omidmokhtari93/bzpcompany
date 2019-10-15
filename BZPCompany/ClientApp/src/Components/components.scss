@@ -1,0 +1,13 @@
+.email-text {
+  color: white;
+
+  &:hover {
+    color: rgb(200, 215, 255);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .what-we-do {
+    margin-top: 15px;
+  }
+}

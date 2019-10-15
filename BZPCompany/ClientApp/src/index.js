@@ -1,8 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import './Assets/scss/common.scss'
-import 'react-notifications-component/dist/theme.css'
-import 'react-loading-bar/dist/index.css'
 import 'font-awesome/css/font-awesome.min.css'
 import React from 'react';
 import ReactDOM from 'react-dom';

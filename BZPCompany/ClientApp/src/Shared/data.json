@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Zinc Oxide (ZNO)",
+        "text": "Zinc oxide is one of the richest nanostructures in terms of diversity in morphology and application ...",
+        "image": "./zinc-oxide.jpg"
+    },
+    {
+        "title": "Titanium Dioxide",
+        "text": "It is used in water purification, decolourization, deodorizing, making special ceramics, destroying ...",
+        "image": "./tit-oxide.jpg"
+    },
+    {
+        "title": "Hard Coating",
+        "text": "Hard coatings are thin films which are deposited on tool substrates in order to improve their desired ...",
+        "image": "./hard-coating.jpg"
+    }
+]
