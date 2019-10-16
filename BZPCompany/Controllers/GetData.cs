@@ -11,7 +11,7 @@ namespace BZPCompany.Controllers
     public class GetData : Controller
     {
         private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=BZPCompany;Integrated Security=True");
-        [HttpGet("/api/GetPosts")]
+        [HttpGet("/api/GetProducts")]
         public JsonResult GetPosts()
         {
             con.Open();
@@ -72,6 +72,41 @@ namespace BZPCompany.Controllers
             }
             con.Close();
             return new JsonResult(product);
+        }
+
+        [HttpGet("/api/SendMail")]
+        public bool SendMail(){
+            return false;
+            // try
+            // {
+            //     var mail = new MailMessage();
+            //     mail.To.Add("info@bornatek.ir");
+            //     mail.From = new MailAddress("borna.assistanse@gmail.com", email, System.Text.Encoding.UTF8);
+            //     mail.Subject = name;
+            //     mail.SubjectEncoding = System.Text.Encoding.UTF8;
+            //     var userMessage = File.ReadAllText(HttpContext.Current.Server.MapPath("~/assets/Content/contactus.html"));
+            //     userMessage = userMessage.Replace("#Name#", name);
+            //     userMessage = userMessage.Replace("#Email#", email);
+            //     userMessage = userMessage.Replace("#Phone#", phone);
+            //     userMessage = userMessage.Replace("#Message#", message);
+            //     mail.Body = userMessage;
+            //     mail.BodyEncoding = System.Text.Encoding.UTF8;
+            //     mail.IsBodyHtml = true;
+            //     mail.Priority = MailPriority.High;
+            //     var client = new SmtpClient
+            //     {
+            //         Credentials = new System.Net.NetworkCredential("borna.assistanse@gmail.com", "Omid1993"),
+            //         Port = 587,
+            //         Host = "smtp.gmail.com",
+            //         EnableSsl = true
+            //     };
+            //     client.Send(mail);
+            //     return true;
+            // }
+            // catch
+            // {
+            //     return false;
+            // }
         }
     }
 }

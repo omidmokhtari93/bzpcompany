@@ -11,7 +11,7 @@ export default class Footer extends Component {
     }
 
     componentDidMount() {
-        http.get('/api/GetPosts').then(response => {
+        http.get('/api/GetProducts').then(response => {
             this.setState({ whatWeDo: response.data })
         })
     }
@@ -26,8 +26,8 @@ export default class Footer extends Component {
                     </div>
                     <hr className="bg-light" />
                     <div>
-                        <span className="fa fa-phone mr-1"></span> Phone numbers: <br />
-                        +421911216821 - +421940978408
+                        <span className="fa fa-phone mr-1"></span> Phone number: <br />
+                        +421940719725
                     </div>
                     <hr className="bg-light" />
                     <div>

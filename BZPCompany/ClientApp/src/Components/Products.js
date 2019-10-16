@@ -12,7 +12,7 @@ export default class Products extends Component {
     }
 
     componentDidMount() {
-        http.get('/api/GetPosts').then(response => {
+        http.get('/api/GetProducts').then(response => {
             this.setState({ posts: response.data })
         })
     }

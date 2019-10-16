@@ -11,7 +11,7 @@ export default class Carousel extends Component {
     }
 
     componentDidMount() {
-        http.get('/api/GetPosts').then(response => {
+        http.get('/api/GetProducts').then(response => {
             this.setState({ carousel: response.data })
         })
     }

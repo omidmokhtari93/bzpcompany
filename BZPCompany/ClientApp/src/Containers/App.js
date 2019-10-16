@@ -6,6 +6,7 @@ import Carousel from '../Containers/Carousel';
 import Products from '../Components/Products';
 import Product from '../Components/Product';
 import Home from '../Components/Home';
+import ContactUs from '../Components/Contactus';
 
 export default class App extends Component {
 
@@ -51,6 +52,9 @@ export default class App extends Component {
               </Route>
               <Route exact path="/product/:id">
                 <Product />
+              </Route>
+              <Route exact path="/contactus">
+                <ContactUs />
               </Route>
             </Switch>
           </div>
