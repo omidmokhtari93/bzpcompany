@@ -67,7 +67,7 @@ export default class ContactUs extends Component {
                                     <div className="input-group-text"><i className="fa fa-envelope text-info"></i></div>
                                 </div>
                                 <input type="email" name="email" onChange={(e) => this.handleInputs(e)}
-                                    value={this.state.email} className="form-control" placeholder="example@gmail.com" required />
+                                    value={this.state.email} className="form-control" placeholder="Email address" required />
                             </div>
                         </div>
                         <div className="form-group">
@@ -76,7 +76,7 @@ export default class ContactUs extends Component {
                                     <div className="input-group-text"><i className="fa fa-phone text-info"></i></div>
                                 </div>
                                 <input type="phone" name="phone" onChange={(e) => this.handleInputs(e)}
-                                    className="form-control" value={this.state.phone} placeholder="+1 222 555 444 22" required />
+                                    className="form-control" value={this.state.phone} placeholder="Phone number" required />
                             </div>
                         </div>
                         <div className="form-group">
@@ -84,8 +84,8 @@ export default class ContactUs extends Component {
                                 <div className="input-group-prepend">
                                     <div className="input-group-text"><i className="fa fa-comment text-info"></i></div>
                                 </div>
-                                <textarea name="message" value={this.state.message} onChange={(e) => this.handleInputs(e)}
-                                    className="form-control" placeholder="Type a messsage ..." required></textarea>
+                                <textarea name="message" rows="3" value={this.state.message} onChange={(e) => this.handleInputs(e)}
+                                    className="form-control" placeholder="Your messsage ..." required></textarea>
                             </div>
                         </div>
                         <div className="text-center">

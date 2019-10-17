@@ -19,3 +19,11 @@
 .input-group-text {
   width: 2.5rem;
 }
+
+@media screen and (max-width: 576px){
+  .product-border{
+    border: 1px solid darkgray;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}

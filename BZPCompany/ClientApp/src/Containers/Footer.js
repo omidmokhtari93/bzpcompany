@@ -31,7 +31,7 @@ export default class Footer extends Component {
                     </div>
                     <hr className="bg-light" />
                     <div>
-                        <span className="fa fa-home mr-1"></span>Address : <br />8th flooor office 808
+                        <span className="fa fa-home mr-1"></span>Address : <br />8th floor office 808
                         Miletichova 550/1,82108
                         <br />Bratislava
                         Slovak Republic
