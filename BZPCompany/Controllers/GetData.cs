@@ -11,12 +11,12 @@ namespace BZPCompany.Controllers
     public class GetData : Controller
     {
         private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=BZPCompany;Integrated Security=True");
-        [HttpGet("/api/GetProducts")]
-        public JsonResult GetPosts()
+        [HttpGet("/api/GetProductsOrServices")]
+        public JsonResult GetPosts(int product)
         {
             con.Open();
             var list = new List<object>();
-            var cmd = new SqlCommand("select * from Posts", con);
+            var cmd = new SqlCommand("select * from Posts " + (product == -1 ? null : "where Product =" + product), con);
             var rd = cmd.ExecuteReader();
             while (rd.Read())
             {
@@ -53,7 +53,7 @@ namespace BZPCompany.Controllers
             return new JsonResult(list);
         }
 
-        [HttpGet("/api/GetProduct")]
+        [HttpGet("/api/GetProductOrService")]
         public JsonResult GetProduct(int id)
         {
             con.Open();
@@ -75,7 +75,8 @@ namespace BZPCompany.Controllers
         }
 
         [HttpGet("/api/SendMail")]
-        public bool SendMail(){
+        public bool SendMail()
+        {
             return false;
             // try
             // {

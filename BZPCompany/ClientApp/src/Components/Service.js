@@ -4,22 +4,22 @@ import http from 'axios';
 import '../Assets/scss/components.scss';
 const rootPath = require.context('../Assets/images/postImages', true);
 
-class Product extends Component {
+class Service extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            product: null
+            service: null
         }
     }
 
     componentDidMount() {
         http.get('/api/GetProductOrService', { params: { id: this.props.match.params.id } }).then(response => {
-            this.setState({ product: response.data })
+            this.setState({ service: response.data })
         })
     }
 
     render() {
-        let data = this.state.product;
+        let data = this.state.service;
         if (data !== null) {
             return (
                 <div className="card card-body">
@@ -46,4 +46,4 @@ class Product extends Component {
         }
     }
 }
-export default withRouter(Product);
+export default withRouter(Service);

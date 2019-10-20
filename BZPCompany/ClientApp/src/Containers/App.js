@@ -7,6 +7,8 @@ import Products from '../Components/Products';
 import Product from '../Components/Product';
 import Home from '../Components/Home';
 import ContactUs from '../Components/Contactus';
+import Service from '../Components/Service';
+import Services from '../Components/Services';
 
 export default class App extends Component {
 
@@ -26,7 +28,10 @@ export default class App extends Component {
                   <NavLink to="/" exact className="nav-link" activeClassName="active">Home</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/products" exact className="nav-link" activeClassName="active">Our Products</NavLink>
+                  <NavLink to="/products" exact className="nav-link" activeClassName="active">Products</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink to="/services" exact className="nav-link" activeClassName="active">Services</NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink to="/contactus" exact className="nav-link" activeClassName="active">Contact Us</NavLink>
@@ -52,6 +57,12 @@ export default class App extends Component {
               </Route>
               <Route exact path="/product/:id">
                 <Product />
+              </Route>
+              <Route exact path="/services">
+                <Services />
+              </Route>
+              <Route exact path="/service/:id">
+                <Service />
               </Route>
               <Route exact path="/contactus">
                 <ContactUs />

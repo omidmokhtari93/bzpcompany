@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import http from 'axios';
 const imagesPath = require.context('../Assets/images/postImages', true);
 
-export default class Products extends Component {
+export default class Services extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: []
+            services: []
         }
     }
 
     componentDidMount() {
-        http.get('/api/GetProductsOrServices', { params: { product: 1 } }).then(response => {
-            this.setState({ posts: response.data })
+        http.get('/api/GetProductsOrServices', { params: { product: 0 } }).then(response => {
+            this.setState({ services: response.data })
         })
     }
 
     render() {
-        return this.state.posts.map((x, index) =>
+        return this.state.services.map((x, index) =>
             <div className="card post-width d-inline-block" key={index}>
                 <img className="card-img-top" alt={x.title} src={imagesPath(x.imagePath, true)} />
                 <div className="card-body text-left">
@@ -26,12 +26,9 @@ export default class Products extends Component {
                     <p className="card-text">
                         {x.text.substring(0, 100) + ' ...'}
                     </p>
-                    <Link to={"/product/" + x.id} className="btn btn-primary">Read more</Link>
+                    <Link to={"/service/" + x.id} className="btn btn-primary">Read more</Link>
                 </div>
             </div>
         )
     }
 }
-
-
-
