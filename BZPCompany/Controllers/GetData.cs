@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace BZPCompany.Controllers
     public class GetData : Controller
     {
         private readonly SqlConnection con = new SqlConnection(connectionString: "Server=.;Database=bornatek_bzp;User ID=bornatek_ir;Password=Omid1993");
+        //private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=BZPCompany;Integrated Security=True");
         [HttpGet("/api/GetProductsOrServices")]
         public JsonResult GetPosts(int product)
         {
@@ -74,40 +76,42 @@ namespace BZPCompany.Controllers
             return new JsonResult(product);
         }
 
-        [HttpGet("/api/SendMail")]
-        public bool SendMail()
+        [HttpPost("/api/SendMail")]
+        public bool SendMail([FromBody]Contact contact)
         {
-            return false;
-            // try
-            // {
-            //     var mail = new MailMessage();
-            //     mail.To.Add("info@bornatek.ir");
-            //     mail.From = new MailAddress("borna.assistanse@gmail.com", email, System.Text.Encoding.UTF8);
-            //     mail.Subject = name;
-            //     mail.SubjectEncoding = System.Text.Encoding.UTF8;
-            //     var userMessage = File.ReadAllText(HttpContext.Current.Server.MapPath("~/assets/Content/contactus.html"));
-            //     userMessage = userMessage.Replace("#Name#", name);
-            //     userMessage = userMessage.Replace("#Email#", email);
-            //     userMessage = userMessage.Replace("#Phone#", phone);
-            //     userMessage = userMessage.Replace("#Message#", message);
-            //     mail.Body = userMessage;
-            //     mail.BodyEncoding = System.Text.Encoding.UTF8;
-            //     mail.IsBodyHtml = true;
-            //     mail.Priority = MailPriority.High;
-            //     var client = new SmtpClient
-            //     {
-            //         Credentials = new System.Net.NetworkCredential("borna.assistanse@gmail.com", "Omid1993"),
-            //         Port = 587,
-            //         Host = "smtp.gmail.com",
-            //         EnableSsl = true
-            //     };
-            //     client.Send(mail);
-            //     return true;
-            // }
-            // catch
-            // {
-            //     return false;
-            // }
+            try
+            {
+                var mail = new MailMessage();
+                mail.To.Add("info@bzpcompany.eu");
+                mail.From = new MailAddress(contact.Email, contact.Name, System.Text.Encoding.UTF8);
+                mail.Subject = contact.Name;
+                mail.SubjectEncoding = System.Text.Encoding.UTF8;
+                mail.Body = contact.Name + "<hr/> " + contact.Phone + "<hr/>" + contact.Message;
+                mail.BodyEncoding = System.Text.Encoding.UTF8;
+                mail.IsBodyHtml = true;
+                mail.Priority = MailPriority.High;
+                var client = new SmtpClient
+                {
+                    Credentials = new System.Net.NetworkCredential("bzpcompany.contactus@gmail.com", "Bzp@2019"),
+                    Port = 587,
+                    Host = "smtp.gmail.com",
+                    EnableSsl = true
+                };
+                client.Send(mail);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
+    }
+
+    public class Contact
+    {
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Message { get; set; }
     }
 }
