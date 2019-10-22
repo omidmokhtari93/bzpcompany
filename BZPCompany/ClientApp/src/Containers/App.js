@@ -36,9 +36,6 @@ export default class App extends Component {
                 <li className="nav-item">
                   <NavLink to="/contactus" exact className="nav-link" activeClassName="active">Contact Us</NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink to="/aboutus" exact className="nav-link" activeClassName="active">About Us</NavLink>
-                </li>
               </ul>
               <div className="form-inline">
                 <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
