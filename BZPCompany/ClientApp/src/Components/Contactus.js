@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Wrapper from '../Shared/Wrapper'
 import http from 'axios';
 import "../Assets/scss/components.scss";
-import loading from '../Assets/images/loading.gif'
 
 export default class ContactUs extends Component {
     constructor(props) {
@@ -20,8 +19,7 @@ export default class ContactUs extends Component {
 
     handleInputs = (element) => {
         this.setState({ success: false, error: false, loading: false });
-        let name = element.target.name;
-        switch (name) {
+        switch (element.target.name) {
             case 'fullname':
                 this.setState({ fullname: element.target.value })
                 break;
@@ -109,9 +107,12 @@ export default class ContactUs extends Component {
                             {this.state.success && (<div className="text-success mb-1 font-weight-bold">
                                 Your message has been sent,<br />We'll check your request and call you soon.
                                 </div>)}
-                            {this.state.loading && <img src={loading} className="loading" />}
+                            {this.state.loading && <div className="spinner-border spinner-border-sm mb-2" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </div>}
                             {this.state.error && <div className="text-danger mb-1 font-weight-bold">Error while sending message</div>}
-                            <input value="Submit" onClick={this.postMessage} type="button" className="btn btn-primary btn-block rounded-0 py-2" />
+                            <input value="Submit" disabled={this.state.loading ? "disabled" : ''}
+                                onClick={this.postMessage} type="button" className="btn btn-primary btn-block rounded-0 py-2" />
                         </div>
                     </div>
                 </div>

@@ -11,8 +11,8 @@ namespace BZPCompany.Controllers
     [Route("api/[controller]")]
     public class GetData : Controller
     {
-        private readonly SqlConnection con = new SqlConnection(connectionString: "Server=.;Database=bornatek_bzp;User ID=bornatek_ir;Password=Omid1993");
-        //private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=BZPCompany;Integrated Security=True");
+        //private readonly SqlConnection con = new SqlConnection(connectionString: "Server=.;Database=bornatek_bzp;User ID=bornatek_ir;Password=Omid1993");
+        private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=BZPCompany;Integrated Security=True");
         [HttpGet("/api/GetProductsOrServices")]
         public JsonResult GetPosts(int product)
         {
