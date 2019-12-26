@@ -11,8 +11,8 @@ namespace BZPCompany.Controllers
     [Route("api/[controller]")]
     public class GetData : Controller
     {
-        //private readonly SqlConnection con = new SqlConnection(connectionString: "Server=.;Database=bornatek_bzp;User ID=bornatek_ir;Password=Omid1993");
-        private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=BZPCompany;Integrated Security=True");
+        private readonly SqlConnection con = new SqlConnection(connectionString: "Server=ASPHOST91\\SQL2017,782 (MS SQL);Database=ABehbahani_bzp;User ID=ABehbahani_user;Password=Omid1993");
+        //private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=BZPCompany;Integrated Security=True");
         [HttpGet("/api/GetProductsOrServices")]
         public JsonResult GetPosts(int product)
         {
@@ -79,31 +79,25 @@ namespace BZPCompany.Controllers
         [HttpPost("/api/SendMail")]
         public bool SendMail([FromBody]Contact contact)
         {
-            try
+            var mail = new MailMessage();
+            mail.To.Add("info@bzpcompany.eu");
+            mail.From = new MailAddress(contact.Email, contact.Name, System.Text.Encoding.UTF8);
+            mail.Subject = contact.Name;
+            mail.SubjectEncoding = System.Text.Encoding.UTF8;
+            mail.Body = contact.Name + "<hr/> " + contact.Phone + "<hr/>" + contact.Message;
+            mail.BodyEncoding = System.Text.Encoding.UTF8;
+            mail.IsBodyHtml = true;
+            mail.Priority = MailPriority.High;
+            var client = new SmtpClient
             {
-                var mail = new MailMessage();
-                mail.To.Add("info@bzpcompany.eu");
-                mail.From = new MailAddress(contact.Email, contact.Name, System.Text.Encoding.UTF8);
-                mail.Subject = contact.Name;
-                mail.SubjectEncoding = System.Text.Encoding.UTF8;
-                mail.Body = contact.Name + "<hr/> " + contact.Phone + "<hr/>" + contact.Message;
-                mail.BodyEncoding = System.Text.Encoding.UTF8;
-                mail.IsBodyHtml = true;
-                mail.Priority = MailPriority.High;
-                var client = new SmtpClient
-                {
-                    Credentials = new System.Net.NetworkCredential("bzpcompany.contactus@gmail.com", "Bzp@2019"),
-                    Port = 587,
-                    Host = "smtp.gmail.com",
-                    EnableSsl = true
-                };
-                client.Send(mail);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+                Credentials = new System.Net.NetworkCredential("bzpcompany.contactus@gmail.com", "Bzp@2019"),
+                Port = 587,
+                Host = "smtp.gmail.com",
+                EnableSsl = true,
+                UseDefaultCredentials = false
+            };
+            client.Send(mail);
+            return true;
         }
     }
 
