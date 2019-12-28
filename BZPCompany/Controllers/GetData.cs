@@ -11,8 +11,8 @@ namespace BZPCompany.Controllers
     [Route("api/[controller]")]
     public class GetData : Controller
     {
-        private readonly SqlConnection con = new SqlConnection(connectionString: "Server=ASPHOST91\\SQL2017,782 (MS SQL);Database=ABehbahani_bzp;User ID=ABehbahani_user;Password=Omid1993");
-        //private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=BZPCompany;Integrated Security=True");
+        //private readonly SqlConnection con = new SqlConnection(connectionString: "Server=ASPHOST91\\SQL2017,782 (MS SQL);Database=ABehbahani_bzp;User ID=ABehbahani_user;Password=Omid1993");
+        private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=BZPCompany;Integrated Security=True");
         [HttpGet("/api/GetProductsOrServices")]
         public JsonResult GetPosts(int product)
         {
@@ -90,11 +90,10 @@ namespace BZPCompany.Controllers
             mail.Priority = MailPriority.High;
             var client = new SmtpClient
             {
-                Credentials = new System.Net.NetworkCredential("bzpcompany.contactus@gmail.com", "Bzp@2019"),
-                Port = 587,
-                Host = "smtp.gmail.com",
                 EnableSsl = true,
-                UseDefaultCredentials = false
+                Credentials = new System.Net.NetworkCredential("bzpcompany.contactus@gmail.com", "%TGB6yhn^YHN5tgb"),
+                Port = 587,
+                Host = "smtp.gmail.com"
             };
             client.Send(mail);
             return true;
