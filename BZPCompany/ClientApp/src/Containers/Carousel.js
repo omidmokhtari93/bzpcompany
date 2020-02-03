@@ -32,7 +32,7 @@ export default class Carousel extends Component {
                                 <div className="mask rgba-black-light"></div>
                             </div>
                             <div className="carousel-caption">
-                                <h3><span className="badge badge-primary font-weight-light">{x.title}</span></h3>
+                                <h3 className="mb-0"><span className="badge badge-primary font-weight-light">{x.title}</span></h3>
                                 <h5><span className="badge badge-primary font-weight-lighter">
                                     {winWidth() ? x.text.substring(0, 30) + ' ...' :
                                         x.text.substring(0, 70) + ' ...'}</span>
