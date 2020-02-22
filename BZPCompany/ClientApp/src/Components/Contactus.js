@@ -51,7 +51,9 @@ export default class ContactUs extends Component {
             } else {
                 this.setState({ error: true, loading: false, success: false });
             }
-        })
+        }).catch(error => {
+            this.setState({ error: true, loading: false, success: false });
+        });
     }
 
     render() {
